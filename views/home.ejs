@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include head %>
+</head>
+<body class="container">
+    <h1><%= title %></h1>
+    <% if (!auth){ %>
+        <form action="/users" method="post">
+            <div><input name="username" placeholder="login" type="text"/></div>
+            <div><input name="password" placeholder="password" type="password"/></div>
+            <% if (flash.error) {%>
+                <span style="color:red"><%=flash.error%></span>
+            <%}%>
+            <div><input type="submit"/></div>
+        </form>
+    <% } else { %>
+    <h2>hello <%= person.user%></h2>
+        <a href="/logout">logout</a>
+    <%}%>
+</body>
+</html>
